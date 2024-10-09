@@ -11,7 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('students', function (Blueprint $table) {
+        Schema::create('medias', function (Blueprint $table) {
+            $table->id();
+            $table->text('name');
+            $table->timestamps();
             $table->softDeletes();
         });
     }
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });
+        Schema::dropIfExists('media');
     }
 };
